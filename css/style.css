@@ -1,0 +1,84 @@
+:root {
+    --header-height : 8rem;
+    --color-primary : rgba(255,255,255,0.1);
+}
+
+body {
+    background-color: #1e2d3b;
+    color: #adadad;
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: .05rem;
+}
+
+.inner-wrapper {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/*
+###########
+H E A D E R
+###########
+*/
+
+.inner-header {
+    height: var(--header-height);
+    justify-content: space-between;
+}
+
+.header .outer-logo {
+    height: 100%;
+}
+
+.header .outer-logo img.logo {
+    max-height: 100%;
+}
+
+.header .outer-select {
+    border-radius: .5rem;
+}
+
+.header button {
+    background-color: #1e2d3b;
+    border: 1px solid white;
+    border-radius: .5rem;
+    font-size: inherit;
+}
+
+/*
+#######
+M A I N 
+#######
+*/
+
+.main .outer-card-container.flex-container {
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: center;
+    justify-content: space-between;
+    min-height: calc(100vh - var(--header-height)); /* Fills full height of screen*/
+    width: 100%;
+}
+
+.single-card-outer.flex-container {
+    flex: 0 0 calc((100% - 1rem) / 2);
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+    .single-card-outer.flex-container {
+        flex-basis: calc((100% - 2rem) / 3);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .single-card-outer.flex-container {
+        flex-basis: calc((100% - 4rem) / 5);
+    }
+}
+
+img.album-cover {
+    width: 100%;
+}
