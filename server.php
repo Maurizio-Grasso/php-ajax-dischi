@@ -2,37 +2,42 @@
     include 'partials/database.php';
 
     header('Content-Type: application/json');
-
-    $request = $_GET;
     
     
-    if($_GET['list'] == 'artists'){
+    if(!empty($_GET['list']) ) {
 
-        $artistsList = [];
+        if ( $_GET['list']  == 'artists') {
+            
+            $artistsList = ['All Artists'];
+            
+            foreach ($database as $album) {
+                $artistsList[] = $album['author'];
+            }
+            
+            echo json_encode($artistsList);
+        }
+    }
+        
+    if(!empty($_GET['artist']) ) {
 
-        foreach ($database as $album) {
-            $artistsList[] = $album['author'];
+        if($_GET['artist'] == 'All Artists') {
+            echo json_encode($database);
         }
         
-        echo json_encode($artistsList);
-    }
+        else {
 
-    
+            $filteredDatabase = [];
 
-    if($request['artist'] == 'all') {
-        echo json_encode($database);
-    }
-    else {
-        $filteredDatabase = [];
-
-        foreach ($database as $album) {
-    
-            if($album['author']==$request['artist']){
-            $filteredDatabase[] = $album;        
+            foreach ($database as $album) {
+        
+                if($album['author']==$_GET['artist']){
+                $filteredDatabase[] = $album;        
+                }
             }
-        }
-        echo json_encode($filteredDatabase);
 
-    }
+            echo json_encode($filteredDatabase);
+
+        }
+}
 
 ?>

@@ -29,22 +29,44 @@
 
             <div class="inner-header flex-container inner-wrapper text-center">
 
+
                 <!-- LOGO -->
+
                 <div class="outer-logo padding-standard">
                     <img src="img/spotify_logo.png" alt="" class="logo">
                 </div>
 
+
                 <!-- Artists Select -->
+
                 <div class="outer-select padding-standard bg-primary">
                     <label for="select-artist" class="margin-r-standard text-white">Filtra per Artista</label>
-                        <select class="padding-l-more padding-r-more padding-t-standard padding-b-standard" name="" id="select-artist" @change="filterByArtist()">
-                            <option v-for="artist in artistsAll" :value="artist">{{ artist }}</option>
+
+                        <select class="padding-l-more padding-r-more padding-t-standard padding-b-standard" 
+                                name="" 
+                                id="select-artist" 
+                                @change="getAlbumsByApi" 
+                                v-model="selectedArtist">
+
+                            <option 
+                                v-for="artist in artistsAll" 
+                                :value="artist">{{ artist }}
+                            </option>
+
                         </select>
                 </div>
 
+
                 <!-- Sort By Year Button -->
+
                 <div class="outer-button padding-standard">
-                    <button @click="orderAlbums()" class="padding-l-more padding-r-more padding-t-standard padding-b-standard text-white">Ordina per Anno</button>
+
+                    <button 
+                        @click="orderAlbums()" 
+                        class="padding-l-more padding-r-more padding-t-standard padding-b-standard text-white">
+                            Ordina per Anno
+                    </button>
+
                 </div>
 
             </div>
@@ -53,8 +75,12 @@
 
         <main class="main">
             
+
             <!-- Cards Container -->
+
             <div class="outer-card-container flex-container inner-wrapper padding-standard">
+
+                <!-- Each single Card -->
 
                 <div v-for="album in albumsAll" class="single-card-outer flex-container bg-primary padding-standard margin-b-standard text-center">
                     
@@ -63,11 +89,13 @@
                     <span class="album-artist margin-t-standard">{{ album.author }}</span>
                     <span class="album-year margin-t-standard">{{ album.year }}</span>
 
-                </div>
-            </div>
+                </div>  <!-- Single Card END -->
+
+            </div>  <!-- Card Container END -->
+            
         </main>
         
-    </div>
+    </div>  <!-- Outer Wrapper END -->
 
     <!-- Javascript -->
     <script src="js/main.js"></script>
