@@ -26,12 +26,20 @@
     <div id="root" class="outer-wrapper">
 
         <header class="header bg-primary">
-        
+
             <div class="inner-header flex-container inner-wrapper text-center">
 
                 <!-- LOGO -->
                 <div class="outer-logo padding-standard">
                     <img src="img/spotify_logo.png" alt="" class="logo">
+                </div>
+
+                <!-- Artists Select -->
+                <div class="outer-select padding-standard bg-primary">
+                    <label for="select-artist" class="margin-r-standard text-white">Filtra per Artista</label>
+                        <select class="padding-l-more padding-r-more padding-t-standard padding-b-standard" name="" id="select-artist" @change="filterByArtist()">
+                            <option v-for="artist in artistsAll" :value="artist">{{ artist }}</option>
+                        </select>
                 </div>
 
                 <!-- Sort By Year Button -->
